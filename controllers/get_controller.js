@@ -9,12 +9,11 @@ const get_hru = (req, res) => {
   });
 };
 
-const get_all_users = (req, res) => {
-  const userObject = null;
-  qery = model.users.findAll().then((finded) => {
-    const userObject = finded.map((useer) => useer.toJSON());
+const get_all_users = async (req, res) => {
+  let userObject = null;
+  await model.users.findAll().then((finded) => {
+    userObject = finded.map((useer) => useer.toJSON());
   });
-  console.log(userObject);
   res.status(200).send(userObject);
 };
 

@@ -1,6 +1,6 @@
-const Sequelize = require("sequelize");
 require("dotenv").config({ path: "../.env" });
-
+const Sequelize = require("sequelize");
+console.log(process.env.DB_NAME);
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.USER,
@@ -29,34 +29,48 @@ const posts = sequelize.define(
   }
 );
 
-const users = sequelize.define("users", {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+const users = sequelize.define(
+  "users",
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    username: Sequelize.STRING(50),
+    summary: Sequelize.STRING(100),
   },
-  username: Sequelize.STRING(50),
-  summary: Sequelize.STRING(100),
-});
+  {
+    tableName: "users", // specify the name of the existing table
+    timestamps: false, // turn off Sequelize's timestamp fields
+  }
+);
 
-const posts_user = sequelize.define("posts_users", {
-  post: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    references: {
-      model: "posts",
-      key: "id",
+const posts_user = sequelize.define(
+  "posts_users",
+  {
+    post: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      references: {
+        model: "posts",
+        key: "id",
+      },
+    },
+    user: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
   },
-  user: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    references: {
-      model: "user",
-      key: "id",
-    },
-  },
-});
+  {
+    tableName: "posts_users", // specify the name of the existing table
+    timestamps: false, // turn off Sequelize's timestamp fields
+  }
+);
 
 sequelize
   .sync({ force: false })
@@ -67,4 +81,4 @@ sequelize
     console.log("Error syncing tables:", err);
   });
 
-module.exports = { posts, users, posts_user };
+module.exports = { sequelize, posts, users, posts_user };

@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config({ path: "./.env" });
 const port = 8081;
 const route_for_get = require("./routes/get_routes");
 const jsonParser = require("./middleware/json_parcer");

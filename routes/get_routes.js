@@ -1,10 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const get_controllers = require("../controllers/get_controller");
 
-router.get('/hru', (req, res) => {
-    res.status(200).send({
-        hru: 'хрю'
-    })
-})
+router.get("/hru", get_controllers.get_hru);
 
-module.exports = router
+module.exports = router;

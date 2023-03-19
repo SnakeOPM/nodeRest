@@ -13,7 +13,7 @@ const swagger = require("./swagger");
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
-      title: "Colledge API",
+      title: "Colledge REST API",
       description: "Colledge task lab 3",
       contact: {
         name: "SnakeOPM",

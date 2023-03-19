@@ -18,10 +18,10 @@ router.post("/new_user", post_controllers.add_user);
 
 /**
  * @swagger
- * /post/new_user:
+ * /post/new_post:
  *   post:
  *     summary: creates new post
- *     description: creates new post WARNING you need to provide an id of user that belongs to this post
+ *     description: creates new post, you need to provide an id of user that belongs to this post
  *     produces:
  *       - application/json
  *     responses:

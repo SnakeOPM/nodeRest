@@ -10,7 +10,7 @@ const get_hru = (req, res) => {
 };
 
 const get_all_users = async (req, res) => {
-  let userObject = null;
+  let userObject;
   await model.users.findAll().then((finded) => {
     userObject = finded.map((useer) => useer.toJSON());
   });
@@ -18,11 +18,11 @@ const get_all_users = async (req, res) => {
 };
 
 const get_all_posts = async (req, res) => {
-  let userObject = null;
+  let postsObject;
   await model.posts.findAll().then((finded) => {
-    userObject = finded.map((useer) => useer.toJSON());
+    postsObject = finded.map((useer) => useer.toJSON());
   });
-  res.status(200).send(userObject);
+  res.status(200).send(postsObject);
 };
 
 module.exports = { get_hru, get_all_users, get_all_posts };

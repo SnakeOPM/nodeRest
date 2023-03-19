@@ -1,11 +1,31 @@
 const express = require("express");
 const app = express();
 require("dotenv").config({ path: "./.env" });
-const port = 8081;
+const port = process.env.PORTAPP;
 const route_for_get = require("./routes/get_routes");
 const route_for_post = require("./routes/post_routes");
 const route_for_delete = require("./routes/delete_routes");
 const jsonParser = require("./middleware/json_parcer");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+const swagger = require("./swagger");
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: "Colledge API",
+      description: "Colledge task lab 3",
+      contact: {
+        name: "SnakeOPM",
+      },
+      servers: ["http://localhost:8081"],
+    },
+  },
+  apis: ["./routes/*.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(jsonParser);
 app.use("/get", route_for_get);

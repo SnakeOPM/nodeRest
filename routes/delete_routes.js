@@ -7,7 +7,7 @@ const delete_controllers = require("../controllers/delete_controller");
  * /delete/post:
  *   delete:
  *     summary: delete a post
- *     description: deteletes a post by id req delID: int
+ *     description: deteletes a post by id req delID(int)
  *     produces:
  *       - application/json
  *     requestBody:

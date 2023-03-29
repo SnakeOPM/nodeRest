@@ -35,7 +35,7 @@ router.post("/new_user", post_controllers.add_user);
  * /post/new_post:
  *   post:
  *     summary: creates new post
- *     description: creates new post, you need to provide an id of user that belongs to this post requires newTitle, newBody, userPostId: int
+ *     description: creates new post, you need to provide an id of user that belongs to this post requires newTitle, newBody, userPostId(int)
  *     produces:
  *       - application/json
  *     requestBody:

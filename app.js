@@ -5,6 +5,7 @@ const port = process.env.PORTAPP;
 const route_for_get = require("./routes/get_routes");
 const route_for_post = require("./routes/post_routes");
 const route_for_delete = require("./routes/delete_routes");
+const route_for_patch = require("./routes/patch_routes");
 const jsonParser = require("./middleware/json_parcer");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -31,6 +32,7 @@ app.use(jsonParser);
 app.use("/get", route_for_get);
 app.use("/post", route_for_post);
 app.use("/delete", route_for_delete);
+app.use("/patch", route_for_patch);
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);

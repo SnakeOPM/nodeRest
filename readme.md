@@ -9,3 +9,4 @@ And create a dotenv file with this variables:
 ``DB_NAME``
 ``PORT``
 ``PORTAPP``
+Docs at /api-docs
